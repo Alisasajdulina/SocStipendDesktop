@@ -1,0 +1,29 @@
+﻿<Window x:Class="SocStipendDesktop.Views.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Авторизация" Height="350" Width="300"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="15">
+        <StackPanel>
+            <TextBlock Text="Логин:" Margin="0,0,0,5"/>
+            <TextBox Text="{Binding Username}" Height="25"/>
+
+            <TextBlock Text="Пароль:" Margin="0,10,0,5"/>
+            <PasswordBox x:Name="PasswordBox" Height="25" 
+                         PasswordChanged="PasswordBox_PasswordChanged"/>
+
+            <TextBlock Text="Капча:" Margin="0,10,0,5"/>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding CaptchaImage}" Width="150" Height="50" 
+                       Cursor="Hand" MouseDown="Image_MouseDown"/>
+                <Button Content="Обновить" Command="{Binding RefreshCaptchaCommand}" 
+                        Margin="10,0,0,0" Padding="5"/>
+            </StackPanel>
+            <TextBox Text="{Binding CaptchaInput}" Margin="0,5,0,0" Height="25"/>
+
+            <!-- Добавлен CommandParameter с привязкой к PasswordBox -->
+            <Button Content="Войти" Command="{Binding LoginCommand}" 
+        Margin="0,20,0,0" Padding="10,3" FontWeight="Bold"/>
+        </StackPanel>
+    </Grid>
+</Window>
